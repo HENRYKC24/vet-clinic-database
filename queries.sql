@@ -32,6 +32,7 @@ BEGIN;
 UPDATE animals SET species='unspecified';
 SELECT * FROM animals;
 ROLLBACK;
+SELECT species from animals;
 
 
 -- Start a transaction and persist the data afterwards
@@ -40,7 +41,7 @@ BEGIN:
 Update the animals table by setting the species column
 ** to digimon for all animals that have a name ending in mon
 */
-UPDATE animals SET species='pigimon' WHERE name LIKE '%mon';
+UPDATE animals SET species='digimon' WHERE name LIKE '%mon';
 /*
 ** Update the animals table by setting the species column
 ** to pokemon for all animals that don't have species already set.
@@ -82,8 +83,7 @@ SELECT count(*) from animals;
 -- How many animals have never tried to escape?
 SELECT count(*) from animals WHERE escape_attempts = 0;
 -- What is the average weight of animals?
-SELECT SUM(weight_kg) / count(*) AS average_weight FROM animals;
--- Takes care of null weight if any
+SELECT AVG(weight_kg) FROM animals;
 
 -- Who escapes the most, neutered or not neutered animals?
 select neutered, sum from (
