@@ -13,3 +13,21 @@ CREATE TABLE animals (
 ALTER TABLE animals
 ADD species VARCHAR(50);
 
+
+CREATE TABLE owners(
+ id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+ full_name VARCHAR(50),
+ age INT
+);
+
+CREATE TABLE species(
+ id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+ name VARCHAR(50)
+);
+
+ALTER TABLE animals DROP COLUMN species;
+
+ALTER TABLE animals ADD species_id INT;
+ALTER TABLE animals ADD CONSTRAINT fk_name FOREIGN KEY(species_id) REFERENCES species(id);
+ALTER TABLE animals ADD owner_id INT;
+ALTER TABLE animals ADD CONSTRAINT fk_name2 FOREIGN KEY(owner_id) REFERENCES owners(id);
