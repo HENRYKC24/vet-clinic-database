@@ -1,8 +1,8 @@
 # Vet Clinic Database
 
 > This is a project containing a vet clinic database. It is currently being worked on.
-
-
+# Database Schema
+![Database Schema](./images/vet_clinic.png)
 ## Getting Started
 
 This repository includes files with plain SQL that can be used to recreate a database:
